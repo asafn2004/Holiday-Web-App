@@ -82,5 +82,5 @@ Before running the frontend application, make sure you have the following depend
 - Feel free to customize and extend this project to suit your specific requirements.
 
 Enjoy using the Holiday-Web-App!
-```
+
 
