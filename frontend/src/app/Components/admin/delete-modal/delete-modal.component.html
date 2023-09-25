@@ -1,0 +1,17 @@
+<div class="deleteModal">
+    <div class="modal-header">
+        <h4 class="modal-title" style="font-weight: bolder;">Delete Vacation</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="close()"></button>
+    </div>
+    <div class="modal-body">
+        <p><strong>Are You Sure You Want To Delete 
+            <span style="color: black;">{{destination}}</span> Vacation?</strong></p>
+        <p>
+            All Information Associated To This Vacation Will Be Permanently Deleted.
+            <span style="color: black;">This Operation Can Not Be Undone.</span>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light withColor" (click)="delete()">Delete</button>
+    </div>
+</div>

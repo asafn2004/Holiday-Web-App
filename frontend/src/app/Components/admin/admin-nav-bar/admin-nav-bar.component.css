@@ -1,0 +1,16 @@
+input{
+    margin-bottom: 10px;
+    margin-top: 60px;
+    margin-right: 15px;
+}
+
+.btn-light{
+    font-weight: bolder;
+    color: coral;
+}
+
+/* .btn-light.clicked {
+    font-weight: bolder;
+    color: coral;
+    background-color:  rgba(122, 97, 123); 
+  } */

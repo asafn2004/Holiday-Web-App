@@ -1,0 +1,110 @@
+
+
+# version: "3"
+# services:
+#   frontend:
+#     build:
+#       context: ./frontend
+#     ports:
+#       - "4200:80"  #host port:container port
+
+#   backend:
+#     build:
+#       context: ./backend
+#     ports:
+#       - "5000:5000"
+
+#   database:
+#     build:
+#       context: ./database
+#     ports:
+#       - "3306:3306"
+
+
+# Zeev Style:
+
+# MYSQL + BACKEND (api) + FRONTEND (REACT)
+# for running everything use : docker-compose up -d
+services:
+  #        -------------------------- database -------------------------
+  # Northwind database (mysql) service:
+  holidayapp-database-service:
+    #image name to create from Dockerfile:
+    image: asafnahmi/holidayapp-database-image:1.0
+
+    #Build the image if not exists , the instruction are inside the directory
+    build: ./database
+
+    #Container name:
+    container_name: holidayapp-database-container
+
+    #port binding (host:container)
+    ports:
+      - 3306:3306
+
+    #Enviorment variables needed by MySQL:
+    environment:
+      MYSQL_HOST: localhost #internally for the container
+      MYSQL_DATABASE: holidayapp
+      MYSQL_ROOT_PASSWORD: 12345678 #needed by mysql
+
+    #On crash - restart continaer , unless manually stopped
+    restart: unless-stopped
+
+    #Database volumes:
+    #named volume
+    volumes:
+      - holidayapp:/var/lib/mysql
+
+  #        -------------------------- backend  -------------------------
+
+  holidayapp-backend-service:
+    #image name
+    image: asafnahmi/holidayapp-backend-image:1.0
+
+    #build the image (if not exists) from specified Dockerfile location:
+    build: ./backend
+
+    #container name:
+    container_name: holidayapp-backend-container
+
+    #port binding (host:container):
+    ports:
+      - 5000:4000
+
+    #Environment variables
+    environment:
+      PORT: 4000
+      MYSQL_HOST: holidayapp-database-service #above database service is the name
+      MYSQL_DATABASE: holidayapp
+      MYSQL_User: root
+      MYSQL_PASSWORD: 12345678
+
+    #On crash
+    restart: unless-stopped
+
+    #host volumes
+    volumes:
+      - ./backend:/app
+
+    #On which service we are depnding on (starting/stopping order)
+    depends_on:
+      - holidayapp-database-service
+
+  #        -------------------------- frontend -------------------------
+
+  holidayapp-frontend-service:
+    image: asafnahmi/holidayapp-frontend-image:1.0
+    build: ./frontend
+    container_name: holidayapp-frontend-container
+    ports:
+      - 4200:80
+    restart: unless-stopped
+    volumes:
+      - ./frontend:/app
+    depends_on:
+      - holidayapp-backend-service
+# ------------------------------------------------------------------------------------------
+
+volumes:
+  holidayapp:

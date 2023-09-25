@@ -1,0 +1,44 @@
+
+
+<br>
+<div class="addHolidayForm">
+    <h2>Edit Vacation</h2>
+    <br>
+    <form (ngSubmit)="submitForm()" #registerForm="ngForm">
+      <div class="form-group">
+        <label for="destination">Destination</label>
+        <input type="text" class="form-control" id="destination" name="destination" [(ngModel)]="destination" required>
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" name="description" rows="4" [(ngModel)]="description" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="startDate">Start Date</label>
+        <input type="date" class="form-control" id="startDate" name="startDate" [(ngModel)]="startDate" required (focus)="startDateTouched = true">
+      </div>
+      <div class="form-group">
+        <label for="endDate">End Date</label>
+        <input type="date" class="form-control" id="endDate" name="endDate" [min]="startDate" [(ngModel)]="endDate" required (focus)="endDateTouched = true">
+        <br>
+        <span *ngIf="!durationValid" style="color: red;">Vacation need to start before it ends...</span>
+      </div>
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input type="number" class="form-control" id="price" name="price" (blur)="checkPriceValid()"  [(ngModel)]="price" required>
+        <br>  
+        <span *ngIf="!priceValid" style="color: red;">price has to be between 0 - 10,000 </span>
+      </div>
+      <div class="form-group">
+        <label *ngIf="img" for="img">Current Image</label><br>
+        <img *ngIf="img" [src]="imgURL+img" width="300px" ><br><br>
+        <label for="img">Updated Image</label><br>
+        <input type="file" class="form-control" id="img" name="img" (change)="onFileChange($event)" >
+      </div>
+      <button type="submit" class="btn btn-light withColor"
+      [disabled]="!registerForm.form.valid || !areDatesFilled() || !areAllInputsFilled()"
+      >Update Vacation</button>
+      <br><br>
+      <button type="button" class="btn btn-light" (click)="cancel()">Cancel</button>
+    </form>
+    </div>

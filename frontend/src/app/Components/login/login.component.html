@@ -1,0 +1,16 @@
+
+<div class="Box"  (keydown.enter)="checkLogin()">
+    <h2><b>Book Your Vacation</b></h2>
+<input type="text" placeholder="Email" [(ngModel)]="email"><br>
+<input type="password" placeholder="Password" [(ngModel)]="password">
+<br><br>
+<button class="btn btn-light btn-lg" (click)="checkLogin()">Sign in</button>
+<br><br>
+<p class="error" [innerHTML]="isCorrect"> {{isCorrect}} </p>
+<span class="error" *ngIf="validErrors" [innerHTML]="validErrors"></span>
+<br>
+<span>Not a Member ?</span>
+<br>
+<input type="button" class="btn btn-light signUp" value="Sign Up" (click)="goToSignUp()">
+
+</div>

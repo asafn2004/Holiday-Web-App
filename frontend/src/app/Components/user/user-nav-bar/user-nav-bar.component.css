@@ -1,0 +1,33 @@
+.filterButtons{
+    margin-bottom: 10px;
+    margin-top: 80px;
+    margin-right: 10px;
+    
+}
+
+.btn-lg {
+    width: 100%;
+    font-weight: bolder;
+    color: coral;
+  }
+
+  .btn-lg.clicked {
+    width: 100%;
+    font-weight: bolder;
+    color: coral;
+    background-color:  rgba(122, 97, 123); 
+  }
+
+label{
+    color: rgba(33, 135, 169, 0.584); 
+    text-decoration: underline; 
+    font-weight: bolder; 
+    font-size: larger;
+   
+}
+
+@media (max-width: 600px) {
+    .switches{
+        margin-top: 60px;
+    }
+}

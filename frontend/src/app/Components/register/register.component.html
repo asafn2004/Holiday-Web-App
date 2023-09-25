@@ -1,0 +1,32 @@
+<br>
+<div class="register">
+<h2>Register</h2>
+<br>
+<form (ngSubmit)="submitForm()" #registerForm="ngForm">
+  <div class="form-group">
+    <!-- <label for="firstName">First Name</label> -->
+    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" [(ngModel)]="firstName" required>
+  </div>
+  <div class="form-group">
+    <!-- <label for="lastName">Last Name</label> -->
+    <input type="text" class="form-control" id="lastName" name="lastName"  placeholder="Last Name" [(ngModel)]="lastName" required>
+  </div>
+  <div class="form-group">
+    <!-- <label for="email">Email</label> -->
+    <input type="email" class="form-control" id="email" name="email" placeholder="Email" [(ngModel)]="email" required>
+  </div>
+  <div class="form-group">
+    <!-- <label for="password">Password</label> -->
+    <input type="password" class="form-control" id="password" name="password" placeholder="Password" [(ngModel)]="password" required>
+  </div>
+  <span *ngIf="emailAvailableError" style="color: red;"> *{{emailAvailableError}}* </span>
+  <span *ngIf="validErrors" [innerHTML]="validErrors" style="color: red;"></span>
+  <br>
+  <button type="submit" class="btn btn-light" [disabled]="registerForm.invalid">Register</button>
+  <hr>
+  <br>
+  <span>Already a Member?</span>
+  <br><br>
+  <button type="button" class="btn btn-light" (click)="goToLogin()">Sign-In</button>
+</form>
+</div>

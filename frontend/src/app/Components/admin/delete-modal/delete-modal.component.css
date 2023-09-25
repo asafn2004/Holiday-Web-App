@@ -1,0 +1,10 @@
+.deleteModal{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    color: coral;
+}
+
+.withColor{
+    font-weight: bolder;
+    border: 1px solid black;
+    color: coral;
+}

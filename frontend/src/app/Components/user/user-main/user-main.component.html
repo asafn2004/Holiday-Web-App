@@ -1,0 +1,27 @@
+<div class="main">
+    <app-user-nav-bar (sendFilter)="setFilters($event)"></app-user-nav-bar>
+    <div class="d-flex flex-wrap  holidays">
+        <ng-container  *ngFor="let item of holidays | paginate: { itemsPerPage: 10, currentPage: page }">
+            <div class="card m-2" *ngIf="favoriteBool(item) && futureBool(item) && presentBool(item)">
+            <img class="card-img-top" [src]=imgURL+item.img alt="place">
+            <div class="card-img-overlay d-flex align-items-center" >
+                <i (click)="favorite(item.holidayID)" class="bi"
+                [ngClass]="{'bi-heart-fill':userFollowsMap[item.holidayID],'bi-heart':!userFollowsMap[item.holidayID]}">
+                </i>&nbsp;
+                <span>Like &nbsp; {{followersCountMap[item.holidayID]}}</span>
+            </div>
+            
+            <div class="card-body">
+                <h3 class="card-title">{{item.destination}}</h3>
+                <div class="card-subtitle mb-2 text-muted">{{item.startDate | date:'dd/MM/YYYY'}} - {{item.endDate | date:'dd/MM/YYYY'}}</div>
+                <br>
+                <p class="card-text">{{item.description}}</p>
+            </div>
+            <span class="price">{{item.price | currency: "ILS" : "symbol" : "1.0-0"}}</span>
+        </div>
+        </ng-container>
+        </div>
+        <div class="d-flex justify-content-center mt-4 style">
+            <pagination-controls (pageChange)="page = $event" class="pagination" (pageChange)="scrollToTop()"></pagination-controls>
+          </div>
+</div>

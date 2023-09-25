@@ -1,0 +1,28 @@
+
+
+
+<div class="filterButtons d-flex justify-content-center">
+    <!-- <div class="form-check form-switch my-7">
+        <input class="form-check-input" type="checkbox" id="favorite" (click)="changeFavorite()" [checked]="favorite">
+        <label class="form-check-label" for="favorite">Liked</label>
+    </div>&nbsp;&nbsp;&nbsp;&nbsp; -->
+    <div class="my-7">
+        <input class="btn btn-light btn-lg" type="button" id="present" value="Current" 
+        [ngClass]="{'clicked': present}" (click)="changePresent()" [checked]="present">
+        <!-- <label class="form-check-label" for="present">Current</label> -->
+    </div>&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <div class="my-7">
+        <input class="btn btn-light btn-lg" type="button" id="future" value="Upcoming"
+        [ngClass]="{'clicked': future}" (click)="changeFuture()" [checked]="future">
+        <!-- <label class="form-check-label" for="future">Upcoming</label> -->
+    </div>&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <div class="my-7">
+        <input class="btn btn-light btn-lg" type="button" id="favorite" value="Liked" 
+        [ngClass]="{'clicked': favorite}" (click)="changeFavorite()" [checked]="favorite">
+        <!-- <label class="form-check-label" for="favorite">Liked</label> -->
+    </div>&nbsp;&nbsp;&nbsp;&nbsp;
+   
+ 
+</div>
